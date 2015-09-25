@@ -22,11 +22,14 @@ public:
 	void bind();
     void update(ModelTransform& transform);
 	void update(ModelTransform& transform, const Camera& cam);
+	void update(ModelTransform& transform, const Camera& cam, const glm::vec3 color);
 protected:
 private:
 	static const unsigned int NUM_SHADERS = 2;
 	//static const unsigned int NUM_UNIFORMS = 3;
-    enum{TRANSFORM_U,NUM_UNIFORMS};
+    enum{TRANSFORM_U,
+        COLOR_U,
+        NUM_UNIFORMS};
 
 	std::string LoadShader(const std::string& fileName);
 	void CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const std::string& errorMessage);

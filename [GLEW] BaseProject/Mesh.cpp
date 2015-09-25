@@ -15,13 +15,11 @@ void Mesh::init(Vertex* vertices,unsigned int numVertices){
     glBindVertexArray(m_vertexArrayObject);
 
     std::vector<glm::vec3> positions;
-    std::vector<glm::vec3> colors;
-
+    
     positions.reserve(numVertices);
 
     for(unsigned i = 0; i < numVertices; i++){
         positions.push_back(vertices[i].pos);
-        colors.push_back(vertices[i].color);
     }
 
     glGenBuffers(NUM_BUFFERS, m_vertexArrayBuffers);
@@ -34,16 +32,6 @@ void Mesh::init(Vertex* vertices,unsigned int numVertices){
 
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
-    //color buffer data
-     
-    glBindBuffer(GL_ARRAY_BUFFER, m_vertexArrayBuffers[COLOR_VB]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(colors[0]) * numVertices,
-        &colors[0], GL_STATIC_DRAW);
-
-
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
     glBindVertexArray(0);
 }

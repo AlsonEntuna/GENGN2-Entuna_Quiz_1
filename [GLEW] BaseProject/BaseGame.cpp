@@ -1,10 +1,15 @@
 #include "BaseGame.h"
 
-BaseGame::BaseGame(int width,int height,char title[]){
+BaseGame::BaseGame(int width,int height,char title[])
+{
 window.create(sf::VideoMode(width, height), title, sf::Style::Default,
 		sf::ContextSettings(32));
     window.setPosition(sf::Vector2i(0,0));
     window.setVerticalSyncEnabled(true);
+
+	GLenum status = glewInit();
+	if (status != GLEW_OK)
+		exit(0);
 
     glEnable(GL_DEPTH_TEST);
 
@@ -12,18 +17,20 @@ window.create(sf::VideoMode(width, height), title, sf::Style::Default,
 	running = true;
 }
 
-void BaseGame::eventPoll(){
+void BaseGame::eventPoll()
+{
 	sf::Event event;
-    while (window.pollEvent(event)){
-        if (event.type == sf::Event::Closed){
+    while (window.pollEvent(event))
+	{
+        if (event.type == sf::Event::Closed)
             running = false;
-        }else if (event.type == sf::Event::Resized){
+		else if (event.type == sf::Event::Resized)
             resizeWindow(event.size.width, event.size.height);
-        }
     }
 }
 
-bool BaseGame::isRunning(){
+bool BaseGame::isRunning()
+{
 	return running;
 }
 
@@ -32,35 +39,43 @@ void BaseGame::clear(){
     glLoadIdentity();
 }
 
-void BaseGame::display(){
+void BaseGame::display()
+{
 	window.display();
 }
 
-bool BaseGame::isUPPressed(){
+bool BaseGame::isUPPressed()
+{
 	return sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
 }
 
-bool BaseGame::isDOWNPressed(){
+bool BaseGame::isDOWNPressed()
+{
 	return sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
 }
 
-bool BaseGame::isLEFTPressed(){
+bool BaseGame::isLEFTPressed()
+{
 	return sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
 }
 
-bool BaseGame::isRIGHTPressed(){
+bool BaseGame::isRIGHTPressed()
+{
 	return sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 }
 
-bool BaseGame::isSPressed(){
+bool BaseGame::isSPressed()
+{
 	return sf::Keyboard::isKeyPressed(sf::Keyboard::S);
 }
 
-bool BaseGame::isWPressed(){
+bool BaseGame::isWPressed()
+{
 	return sf::Keyboard::isKeyPressed(sf::Keyboard::W);
 }
 
-bool BaseGame::isSpacePressed(){
+bool BaseGame::isSpacePressed()
+{
     return sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
 }
 
@@ -79,7 +94,8 @@ void BaseGame::start()
 //private functions
 
 void BaseGame::gluPerspectiveCompat( GLdouble fovY, GLdouble aspect, GLdouble zNear,
-		GLdouble zFar ){
+		GLdouble zFar )
+{
     GLdouble fW, fH;
     fH = tan( (fovY / 2) / 180 * 3.14 ) * zNear;
     fH = tan( fovY / 360 * 3.14 ) * zNear;
@@ -87,7 +103,8 @@ void BaseGame::gluPerspectiveCompat( GLdouble fovY, GLdouble aspect, GLdouble zN
     glFrustum( -fW, fW, -fH, fH, zNear, zFar );
 }
 
-void BaseGame::resizeWindow(unsigned int width,unsigned int height){
+void BaseGame::resizeWindow(unsigned int width,unsigned int height)
+{
     glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, width, height);

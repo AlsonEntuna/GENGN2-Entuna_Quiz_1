@@ -12,6 +12,8 @@ class Cube: public BaseObject
 		Cube(float r, float g, float b, float size);
         void init(float r, float g, float b, float size);
         void draw(const Camera& camera) override;
+
+		// Translations
         void moveUP();
         void moveDOWN();
         void moveLEFT();

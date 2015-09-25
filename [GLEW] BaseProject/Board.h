@@ -19,8 +19,8 @@ class Board: public BaseObject
 {
     public:
         Board();
-		Board(char file[],float sideHeight,float xVal,float yVal,float zVal);
-        void init(char file[],float sideHeight,float xVal,float yVal,float zVal);
+		Board(char file[], float sideHeight, float xVal, float yVal, float zVal);
+        void init(char file[], float sideHeight, float xVal, float yVal, float zVal);
 		void update();
         void draw(const Camera& camera) override;
         bool isInitProperly();

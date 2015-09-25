@@ -19,7 +19,6 @@ void Shader::init(const std::string& fileName){
     //this maps the variavles in the vertex shader to the
     //data in functions out
 	glBindAttribLocation(m_program, 0, "position");
-	glBindAttribLocation(m_program, 1, "color");
 
 	glLinkProgram(m_program);
 	CheckShaderError(m_program, GL_LINK_STATUS, true, "Error linking shader program");
@@ -28,6 +27,7 @@ void Shader::init(const std::string& fileName){
 	CheckShaderError(m_program, GL_LINK_STATUS, true, "Invalid shader program");
  
 	m_uniforms[TRANSFORM_U] = glGetUniformLocation(m_program, "transform");
+	m_uniforms[COLOR_U] = glGetUniformLocation(m_program, "color");
 }//end func
 
 Shader::~Shader(){
@@ -60,6 +60,12 @@ void Shader::update(ModelTransform& transform, const Camera& cam){
         GL_FALSE,//do you want to transpose
         &transModel[0][0]);//send the address of the starting address
     
+}
+
+void Shader::update(ModelTransform& transform, const Camera& cam, const glm::vec3 color){
+    glm::mat4 transModel = cam.GetViewProjection() * transform.getModel();
+    glUniformMatrix4fv(m_uniforms[TRANSFORM_U], 1, GL_FALSE, &transModel[0][0]);
+    glUniform3fv(m_uniforms[COLOR_U], 1, &color[0]);
 }
 
 

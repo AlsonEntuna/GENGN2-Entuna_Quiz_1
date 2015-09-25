@@ -27,6 +27,7 @@ class BaseObject
 		Mesh m_mesh;
 		Shader m_shader;
 		ModelTransform m_transform;
+		glm::vec3 m_color;
 };
 
 #endif /* BASEOBJECT_H */

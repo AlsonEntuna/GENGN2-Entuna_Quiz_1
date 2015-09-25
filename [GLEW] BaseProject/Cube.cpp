@@ -13,68 +13,59 @@ Cube::Cube(float r, float g, float b, float size)
 // USE: To Create 3D Cube
 void Cube::init(float r, float g, float b, float size)
 {
+	m_color.x = r;
+	m_color.y = g;
+	m_color.z = b;
 	// Vertex Buffer
 	Vertex vertices[] = 
 	{
-		// Triangle 1
-		Vertex(glm::vec3( size,  size, size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size,  size, size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size, -size, size), glm::vec3(r, g, b)),
+		Vertex(glm::vec3(size, size, size)), // Triangle 1
+		Vertex(glm::vec3(-size, size, size)),
+		Vertex(glm::vec3(-size, -size, size)),
 
-		// Triangle 2
-		Vertex(glm::vec3(-size, -size, size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3( size, -size, size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3( size,  size, size), glm::vec3(r, g, b)),
-		
-		// Triangle 3
-		Vertex(glm::vec3( size,  size,  size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3( size, -size,  size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3( size, -size, -size), glm::vec3(r, g, b)),
+		Vertex(glm::vec3(-size, -size, size)), // Triangle 2
+		Vertex(glm::vec3(size, -size, size)),
+		Vertex(glm::vec3(size, size, size)), 
 
-		// Triangle 4
-		Vertex(glm::vec3(size, -size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(size,  size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(size,  size,  size), glm::vec3(r, g, b)),
+		Vertex(glm::vec3(size, size, size)), // Trinagle 3
+		Vertex(glm::vec3(size, -size, size)),
+		Vertex(glm::vec3(size, -size, -size)),
 
-		// Triangle 5
-		Vertex(glm::vec3( size, size,  size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3( size, size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size, size, -size), glm::vec3(r, g, b)),
+		Vertex(glm::vec3(size, -size, -size)), // Triangle 4
+		Vertex(glm::vec3(size, size, -size)),
+		Vertex(glm::vec3(size, size, size)),
 
-		// Triangle 6
-		Vertex(glm::vec3(-size, size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size, size,  size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3( size, size,  size), glm::vec3(r, g, b)),
+		Vertex(glm::vec3(size, size, size)), // Triangle 5
+		Vertex(glm::vec3(size, size, -size)),
+		Vertex(glm::vec3(-size, size, -size)),
 
-		// Triangle 7
-		Vertex(glm::vec3(-size,  size,  size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size, -size,  size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size, -size, -size), glm::vec3(r, g, b)),
+		Vertex(glm::vec3(-size, size, -size)), // Triangle 6
+		Vertex(glm::vec3(-size, size, size)),
+		Vertex(glm::vec3(size, size, size)),
 
-		// Triangle 8
-		Vertex(glm::vec3(-size, -size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size,  size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size,  size,  size), glm::vec3(r, g, b)),
+		Vertex(glm::vec3(-size, size, size)), // Trinagle 7
+		Vertex(glm::vec3(-size, -size, size)),
+		Vertex(glm::vec3(-size, -size, -size)),
 
-		// Trianlge 9
-		Vertex(glm::vec3( size,  size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size,  size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size, -size, -size), glm::vec3(r, g, b)),
+		Vertex(glm::vec3(-size, -size, -size)), // Triangle 8
+		Vertex(glm::vec3(-size, size, -size)),
+		Vertex(glm::vec3(-size, size, size)),
 
-		// Triangle 10
-		Vertex(glm::vec3(-size, -size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3( size, -size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3( size,  size, -size), glm::vec3(r, g, b)),
+		Vertex(glm::vec3(size, size, -size)), // Triangle 9
+		Vertex(glm::vec3(-size, size, -size)),
+		Vertex(glm::vec3(-size, -size, -size)),
 
-		// Triangle 11
-		Vertex(glm::vec3( size, -size,  size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3( size, -size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size, -size, -size), glm::vec3(r, g, b)),
+		Vertex(glm::vec3(-size, -size, -size)),  // Triangle 10
+		Vertex(glm::vec3(size, -size, -size)),
+		Vertex(glm::vec3(size, size, -size)),
 
-		// Triangle 12
-		Vertex(glm::vec3(-size, -size, -size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3(-size, -size,  size), glm::vec3(r, g, b)),
-		Vertex(glm::vec3( size, -size,  size), glm::vec3(r, g, b))
+		Vertex(glm::vec3(size, -size, size)), // Triangle 11
+		Vertex(glm::vec3(size, -size, -size)),
+		Vertex(glm::vec3(-size, -size, -size)),
+
+		Vertex(glm::vec3(-size, -size, -size)), // Triangle 12
+		Vertex(glm::vec3(-size, -size, size)),
+		Vertex(glm::vec3(size, -size, size)),
 	};
 
 	// Initialize
@@ -85,7 +76,7 @@ void Cube::init(float r, float g, float b, float size)
 void Cube::draw(const Camera& camera)
 {
 	m_shader.bind(); // binds the shader to the mesh
-	m_shader.update(m_transform, camera); // updates the shader 
+	m_shader.update(m_transform, camera, m_color); // updates the shader 
 	m_mesh.draw(); // draws the mesh
 }
 

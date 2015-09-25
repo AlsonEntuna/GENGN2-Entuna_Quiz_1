@@ -73,11 +73,7 @@ void Board::draw(const Camera& camera)
 				case 'y': drawSquare(1.0f, 1.0f, 0.0f, squareSize); break;
 			}
 
-			// Initialize per tile
-			//m_Tiles.back()->initTile(getX() + j * squareSize, getY() + (boxContent.size() - i + 1) * squareSize, getZ(), squareSize);
-			m_Tiles.back()->setX(getX() + j * squareSize);
-			m_Tiles.back()->setY(getY() + (boxContent.size() - i + 1) * squareSize);
-			m_Tiles.back()->setZ(getZ());
+			
 		}
 	}
 
@@ -89,6 +85,10 @@ void Board::draw(const Camera& camera)
 void Board::drawSquare(float r, float g, float b, float size)
 {
 	m_Tiles.push_back(new Cube(r, g, b, size));
+	// Initialize transform per tile
+	//m_Tiles.back()->setX(getX() + j * squareSize);
+	//m_Tiles.back()->setY(getY() + (boxContent.size() - i + 1) * squareSize);
+	//m_Tiles.back()->setZ(getZ());
 }
 
 bool Board::isInitProperly()

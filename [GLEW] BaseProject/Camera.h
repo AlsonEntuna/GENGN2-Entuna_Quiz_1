@@ -5,8 +5,7 @@
 #define GLM_FORCE_RADIANS
 #include <glm/gtx/transform.hpp>
 
-class Camera
-{
+class Camera{
 public:
 	Camera(const glm::vec3& pos,float fov, float aspect, float znear, float zfar);
     glm::mat4 GetViewProjection() const;

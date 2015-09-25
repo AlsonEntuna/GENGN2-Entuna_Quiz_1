@@ -23,8 +23,6 @@ const float SQUARE_WIDTH    = 0.8f;
 class Slide: public BaseGame
 {
     private:
-		// Camera
-		Camera *camera = new Camera(glm::vec3(-1, 0, 3), 70.0f, 400.0f / 300.0f, 0.01f, 1000.0f);
         Board board;
         Cube cube;
         int animationTime;
@@ -32,11 +30,12 @@ class Slide: public BaseGame
         int direction;
     public:
         Slide(int width,int height,char title[]):
-        BaseGame(width,height,title)
+        BaseGame(width, height, title)
 		{
             board.init((char*)"res/slide.map", SQUARE_WIDTH, -START_X, -START_Y, -START_Z);
             //cube.init(-START_X + 0.05f, -START_Y + 0.1f, -START_Z + SQUARE_WIDTH / 2 + 0.05f, SQUARE_WIDTH - 0.1f);
-			cube.init(1.0f, 1.0f, 0.0f, 1.0f);
+
+			cube.init(1.0f, 1.0f, 0.0f, SQUARE_WIDTH - 0.1f);
 			// Set Position Cube
 			cube.setX(-START_X + 0.05f);
 			cube.setY(-START_Y + 0.1f);

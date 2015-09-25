@@ -5,8 +5,7 @@
 #define GLM_FORCE_RADIANS
 #include <glm/gtx/transform.hpp>
 
-class ModelTransform
-{
+class ModelTransform{
 public:
 	ModelTransform(const glm::vec3& pos = glm::vec3(),
         const glm::vec3& rot = glm::vec3(),
