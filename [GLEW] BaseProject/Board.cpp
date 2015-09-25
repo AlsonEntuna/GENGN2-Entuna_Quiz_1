@@ -59,36 +59,37 @@ void Board::draw(const Camera& camera)
 	}
 	glPopMatrix();*/
 
+	glm::vec3 newColor;
 	for (int i = 0; i < boxContent.size(); i++)
 	{
 		for (int j = 0; j < boxContent[i].size(); j++)
 		{
-			switch (boxContent[i][j])
-			{
-				case 'l': drawSquare(1.0f, 1.0f, 1.0f, squareSize); break;
-				case 'd': drawSquare(0.5f, 0.5f, 0.5f, squareSize); break;
-				case 'r': drawSquare(1.0f, 0.0f, 0.0f, squareSize); break;
-				case 'g': drawSquare(0.0f, 1.0f, 0.0f, squareSize); break;
-				case 'b': drawSquare(0.0f, 0.0f, 1.0f, squareSize); break;
-				case 'y': drawSquare(1.0f, 1.0f, 0.0f, squareSize); break;
-			}
+			//switch (boxContent[i][j])
+			//{
+			//	case 'l': drawSquare(1.0f, 1.0f, 1.0f, squareSize); break;
+			//	case 'd': drawSquare(0.5f, 0.5f, 0.5f, squareSize); break;
+			//	case 'r': drawSquare(1.0f, 0.0f, 0.0f, squareSize); break;
+			//	case 'g': drawSquare(0.0f, 1.0f, 0.0f, squareSize); break;
+			//	case 'b': drawSquare(0.0f, 0.0f, 1.0f, squareSize); break;
+			//	case 'y': drawSquare(1.0f, 1.0f, 0.0f, squareSize); break;
+			//}
 
-			
+			//// Initialize transform per tile
+			//m_Tiles.back()->setX(getX() + j * squareSize);
+			//m_Tiles.back()->setY(getY() + (boxContent.size() - i + 1) * squareSize);
+			//m_Tiles.back()->setZ(getZ());
 		}
 	}
 
 	// Draw the tiles 
-	for each (Cube* var in m_Tiles)
-		var->draw(camera);
+	//for each (Tile* var in m_Tiles)
+		//var->draw(camera);
 }
 
-void Board::drawSquare(float r, float g, float b, float size)
+void Board::drawSquare(glm::vec3& pos, float size, glm::vec3& color)
 {
-	m_Tiles.push_back(new Cube(r, g, b, size));
-	// Initialize transform per tile
-	//m_Tiles.back()->setX(getX() + j * squareSize);
-	//m_Tiles.back()->setY(getY() + (boxContent.size() - i + 1) * squareSize);
-	//m_Tiles.back()->setZ(getZ());
+	//m_Tiles.push_back(new Tile(glm, size/2 +));
+	
 }
 
 bool Board::isInitProperly()

@@ -9,6 +9,7 @@ g++ -DSFML_STATIC BaseGame.cpp BaseObject.cpp Board.cpp Cube.cpp main_slide.cpp 
 #include "Board.h"
 #include "Cube.h"
 #include "BaseGame.h"
+#include "Tile.h"
 
 const int DIRECTION_UP      = 1;
 const int DIRECTION_DOWN    = 2;

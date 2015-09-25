@@ -4,68 +4,80 @@ Cube::Cube(){}
 
 Cube::Cube(float r, float g, float b, float size)
 {
-	init(r, g, b, size);
 	// Set sizes to the tiles and cube
 	tileSize = size;
-	cubeSize = (size - 0.1f) / 2;
+	init(r, g, b, cubeSize);
 }
 
 // USE: To Create 3D Cube
 void Cube::init(float r, float g, float b, float size)
 {
+	cubeSize = (size - 0.1f) / 2;
 	m_color.x = r;
 	m_color.y = g;
 	m_color.z = b;
 	// Vertex Buffer
 	Vertex vertices[] = 
 	{
-		Vertex(glm::vec3(size, size, size)), // Triangle 1
-		Vertex(glm::vec3(-size, size, size)),
-		Vertex(glm::vec3(-size, -size, size)),
+		// Triangle 1
+		Vertex(glm::vec3( cubeSize,  cubeSize, cubeSize)),
+		Vertex(glm::vec3(-cubeSize,  cubeSize, cubeSize)),
+		Vertex(glm::vec3(-cubeSize, -cubeSize, cubeSize)),
 
-		Vertex(glm::vec3(-size, -size, size)), // Triangle 2
-		Vertex(glm::vec3(size, -size, size)),
-		Vertex(glm::vec3(size, size, size)), 
+		// Triangle 2
+		Vertex(glm::vec3(-cubeSize, -cubeSize, cubeSize)), 
+		Vertex(glm::vec3( cubeSize, -cubeSize, cubeSize)),
+		Vertex(glm::vec3( cubeSize,  cubeSize, cubeSize)), 
 
-		Vertex(glm::vec3(size, size, size)), // Trinagle 3
-		Vertex(glm::vec3(size, -size, size)),
-		Vertex(glm::vec3(size, -size, -size)),
+		// Trinagle 3
+		Vertex(glm::vec3(cubeSize,  cubeSize,  cubeSize)), 
+		Vertex(glm::vec3(cubeSize, -cubeSize,  cubeSize)),
+		Vertex(glm::vec3(cubeSize, -cubeSize, -cubeSize)),
 
-		Vertex(glm::vec3(size, -size, -size)), // Triangle 4
-		Vertex(glm::vec3(size, size, -size)),
-		Vertex(glm::vec3(size, size, size)),
+		// Triangle 4
+		Vertex(glm::vec3(cubeSize, -cubeSize, -cubeSize)),
+		Vertex(glm::vec3(cubeSize,  cubeSize, -cubeSize)),
+		Vertex(glm::vec3(cubeSize,  cubeSize,  cubeSize)),
 
-		Vertex(glm::vec3(size, size, size)), // Triangle 5
-		Vertex(glm::vec3(size, size, -size)),
-		Vertex(glm::vec3(-size, size, -size)),
+		// Triangle 5
+		Vertex(glm::vec3( cubeSize, cubeSize,  cubeSize)),
+		Vertex(glm::vec3( cubeSize, cubeSize, -cubeSize)),
+		Vertex(glm::vec3(-cubeSize, cubeSize, -cubeSize)),
 
-		Vertex(glm::vec3(-size, size, -size)), // Triangle 6
-		Vertex(glm::vec3(-size, size, size)),
-		Vertex(glm::vec3(size, size, size)),
+		// Triangle 6
+		Vertex(glm::vec3(-cubeSize, cubeSize, -cubeSize)), 
+		Vertex(glm::vec3(-cubeSize, cubeSize,  cubeSize)),
+		Vertex(glm::vec3( cubeSize, cubeSize,  cubeSize)),
 
-		Vertex(glm::vec3(-size, size, size)), // Trinagle 7
-		Vertex(glm::vec3(-size, -size, size)),
-		Vertex(glm::vec3(-size, -size, -size)),
+		// Trinagle 7
+		Vertex(glm::vec3(-cubeSize,  cubeSize,  cubeSize)), 
+		Vertex(glm::vec3(-cubeSize, -cubeSize,  cubeSize)),
+		Vertex(glm::vec3(-cubeSize, -cubeSize, -cubeSize)),
 
-		Vertex(glm::vec3(-size, -size, -size)), // Triangle 8
-		Vertex(glm::vec3(-size, size, -size)),
-		Vertex(glm::vec3(-size, size, size)),
+		// Triangle 8
+		Vertex(glm::vec3(-cubeSize, -cubeSize, -cubeSize)), 
+		Vertex(glm::vec3(-cubeSize,  cubeSize, -cubeSize)),
+		Vertex(glm::vec3(-cubeSize,  cubeSize,  cubeSize)),
 
-		Vertex(glm::vec3(size, size, -size)), // Triangle 9
-		Vertex(glm::vec3(-size, size, -size)),
-		Vertex(glm::vec3(-size, -size, -size)),
+		// Triangle 9
+		Vertex(glm::vec3( cubeSize,  cubeSize, -cubeSize)),
+		Vertex(glm::vec3(-cubeSize,  cubeSize, -cubeSize)),
+		Vertex(glm::vec3(-cubeSize, -cubeSize, -cubeSize)),
 
-		Vertex(glm::vec3(-size, -size, -size)),  // Triangle 10
-		Vertex(glm::vec3(size, -size, -size)),
-		Vertex(glm::vec3(size, size, -size)),
+		// Triangle 10
+		Vertex(glm::vec3(-cubeSize, -cubeSize, -cubeSize)), 
+		Vertex(glm::vec3( cubeSize, -cubeSize, -cubeSize)),
+		Vertex(glm::vec3( cubeSize,  cubeSize, -cubeSize)),
 
-		Vertex(glm::vec3(size, -size, size)), // Triangle 11
-		Vertex(glm::vec3(size, -size, -size)),
-		Vertex(glm::vec3(-size, -size, -size)),
+		// Triangle 11
+		Vertex(glm::vec3( cubeSize, -cubeSize,  cubeSize)), 
+		Vertex(glm::vec3( cubeSize, -cubeSize, -cubeSize)),
+		Vertex(glm::vec3(-cubeSize, -cubeSize, -cubeSize)),
 
-		Vertex(glm::vec3(-size, -size, -size)), // Triangle 12
-		Vertex(glm::vec3(-size, -size, size)),
-		Vertex(glm::vec3(size, -size, size)),
+		// Triangle 12
+		Vertex(glm::vec3(-cubeSize, -cubeSize, -cubeSize)),
+		Vertex(glm::vec3(-cubeSize, -cubeSize,  cubeSize)),
+		Vertex(glm::vec3( cubeSize, -cubeSize,  cubeSize)),
 	};
 
 	// Initialize

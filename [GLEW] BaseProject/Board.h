@@ -11,7 +11,7 @@ Approach 3 is the most efficient method for this problem...
 
 #include <vector>
 #include "BaseObject.h"
-#include "Cube.h"
+#include "Tile.h"
 
 using namespace std;
 
@@ -33,8 +33,8 @@ class Board: public BaseObject
 	private:
         float squareSize;
         vector< std::vector<char> > boxContent;
-        void drawSquare(float r, float g, float b, float size);
-		vector<Cube*> m_Tiles;
+		void drawSquare(glm::vec3& pos, float size, glm::vec3& color);
+		vector<Tile*> m_Tiles;
 };
 
 #endif /* BOARD_H */

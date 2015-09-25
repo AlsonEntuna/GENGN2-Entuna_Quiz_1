@@ -29,7 +29,7 @@ class BaseGame
         virtual void draw() = 0;
 
 		// Camera
-		Camera* camera = new Camera(glm::vec3(-1, 0, 3), 70.0f, 400.0f / 300.0f, 0.01f, 1000.0f);
+		Camera* camera = new Camera(glm::vec3(0, 0, 0), 70.0f, 400.0f / 300.0f, 0.01f, 1000.0f);
 
 	private:
 		sf::Window window;
