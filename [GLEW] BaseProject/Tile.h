@@ -5,8 +5,8 @@ class Tile : public BaseObject
 {
 public:
 	Tile();
-	Tile(glm::vec3& pos, float size, glm::vec3& color);
-	void initializeTile(glm::vec3& pos, float size, glm::vec3& color);
+	Tile(glm::vec3& colorVal);
+	void initializeTile(glm::vec3& pos, float size);
 	void draw(const Camera& camera) override;
 };
 

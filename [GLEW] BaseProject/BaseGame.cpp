@@ -22,10 +22,8 @@ void BaseGame::eventPoll()
 	sf::Event event;
     while (window.pollEvent(event))
 	{
-        if (event.type == sf::Event::Closed)
-            running = false;
-		else if (event.type == sf::Event::Resized)
-            resizeWindow(event.size.width, event.size.height);
+        if (event.type == sf::Event::Closed) running = false;
+		else if (event.type == sf::Event::Resized) resizeWindow(event.size.width, event.size.height);
     }
 }
 

@@ -17,7 +17,8 @@ void Board::init(char file[],float sideHeight,float xVal,float yVal,float zVal)
 	if(!in.fail())
 	{
 	    char c;
-	    do{
+	    do
+		{
 		    c = in.get();
             if(c=='\n'||c==-1)
 			{
@@ -30,66 +31,49 @@ void Board::init(char file[],float sideHeight,float xVal,float yVal,float zVal)
 			else line.push_back(c);
 	    }
 		while(in.good());
-        x = xVal;
-        y = yVal;
-        z = zVal;
+        setX(xVal);
+		setY(yVal);
+		setZ(zVal);
         squareSize = sideHeight;
     }
 	else squareSize = -1;
-}
 
-void Board::draw(const Camera& camera)
-{
-	/*glPushMatrix();
-	for(int i = 0;i < boxContent.size(); i++)
-	{
-	    for(int j=0;j<boxContent[i].size();j++)
-		{
-            switch(boxContent[i][j])
-			{
-                case 'l':glColor3f(1.0f, 1.0f, 1.0f);break;
-                case 'd':glColor3f(0.5f, 0.5f, 0.5f);break;
-                case 'r':glColor3f(1.0f, 0.0f, 0.0f);break;
-                case 'g':glColor3f(0.0f, 1.0f, 0.0f);break;
-                case 'b':glColor3f(0.0f, 0.0f, 1.0f);break;
-                case 'y':glColor3f(1.0f, 1.0f, 0.0f);break;
-            }
-			drawSquare(x+j*squareSize,y+(boxContent.size()-i-1)*squareSize);
-		}
-	}
-	glPopMatrix();*/
-
-	glm::vec3 newColor;
 	for (int i = 0; i < boxContent.size(); i++)
 	{
 		for (int j = 0; j < boxContent[i].size(); j++)
 		{
-			//switch (boxContent[i][j])
-			//{
-			//	case 'l': drawSquare(1.0f, 1.0f, 1.0f, squareSize); break;
-			//	case 'd': drawSquare(0.5f, 0.5f, 0.5f, squareSize); break;
-			//	case 'r': drawSquare(1.0f, 0.0f, 0.0f, squareSize); break;
-			//	case 'g': drawSquare(0.0f, 1.0f, 0.0f, squareSize); break;
-			//	case 'b': drawSquare(0.0f, 0.0f, 1.0f, squareSize); break;
-			//	case 'y': drawSquare(1.0f, 1.0f, 0.0f, squareSize); break;
-			//}
+			switch (boxContent[i][j])
+			{
+				// Set the Color via Constructor
+				case 'l': m_Tiles.push_back(new Tile(glm::vec3(1.0f, 1.0f, 1.0f))); break;
+				case 'd': m_Tiles.push_back(new Tile(glm::vec3(0.5f, 0.5f, 0.5f))); break;
+				case 'r': m_Tiles.push_back(new Tile(glm::vec3(1.0f, 0.0f, 0.0f))); break;
+				case 'g': m_Tiles.push_back(new Tile(glm::vec3(0.0f, 1.0f, 0.0f))); break;
+				case 'b': m_Tiles.push_back(new Tile(glm::vec3(0.0f, 0.0f, 1.0f))); break;
+				case 'y': m_Tiles.push_back(new Tile(glm::vec3(1.0f, 1.0f, 0.0f))); break;
+			}
 
-			//// Initialize transform per tile
-			//m_Tiles.back()->setX(getX() + j * squareSize);
-			//m_Tiles.back()->setY(getY() + (boxContent.size() - i + 1) * squareSize);
-			//m_Tiles.back()->setZ(getZ());
+			// Initialize Position of the tile
+			m_Tiles.back()->initializeTile(glm::vec3(getX() + j * squareSize, getY() + (boxContent.size() - i - 1) * squareSize, getZ()), squareSize);
 		}
 	}
 
-	// Draw the tiles 
-	//for each (Tile* var in m_Tiles)
-		//var->draw(camera);
+	std::cout << "zVal: " << getZ() << std::endl;
 }
 
-void Board::drawSquare(glm::vec3& pos, float size, glm::vec3& color)
+void Board::draw(const Camera& camera)
 {
-	//m_Tiles.push_back(new Tile(glm, size/2 +));
-	
+	// Draw the tiles 
+	for each (Tile* var in m_Tiles)
+		var->draw(camera);
+
+	/*for (int i = 0; i < m_Tiles.size(); i++)
+		m_Tiles[i]->draw(camera);*/
+}
+
+void Board::drawSquare(glm::vec3& pos, float size)
+{
+	//m_Tiles.push_back(new Tile(pos, size));	
 }
 
 bool Board::isInitProperly()

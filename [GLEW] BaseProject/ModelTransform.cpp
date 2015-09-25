@@ -1,7 +1,8 @@
 #include "ModelTransform.h"
 
 ModelTransform::ModelTransform(const glm::vec3& pos,
-        const glm::vec3& rot, const glm::vec3& scale){
+        const glm::vec3& rot, const glm::vec3& scale)
+{
     this->pos = pos;
     this->rot = rot;
     this->scale = scale;
