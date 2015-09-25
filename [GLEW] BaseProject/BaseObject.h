@@ -23,7 +23,6 @@ class BaseObject
 		// Model Transform
 		ModelTransform* Transform();
 	protected:
-        float x, y, z;
 		Mesh m_mesh;
 		Shader m_shader;
 		ModelTransform m_transform;

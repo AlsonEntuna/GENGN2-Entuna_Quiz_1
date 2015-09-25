@@ -67,15 +67,9 @@ void Board::draw(const Camera& camera)
 	for each (Tile* var in m_Tiles)
 		var->draw(camera);
 
-	/*for (int i = 0; i < m_Tiles.size(); i++)
+	/*for (int i = 0; i < m_Tiles.size(); i++) // if not using C++11
 		m_Tiles[i]->draw(camera);*/
 }
-
-void Board::drawSquare(glm::vec3& pos, float size)
-{
-	//m_Tiles.push_back(new Tile(pos, size));	
-}
-
 bool Board::isInitProperly()
 {
     return (boxContent.size() > 0);
@@ -91,7 +85,7 @@ float Board::getBlockWidth()
     return squareSize;
 }
 
-float Board::getTopY(){return (boxContent.size()-1)*squareSize+y;}
+float Board::getTopY(){return (boxContent.size() - 1) * squareSize+ getY();}
 
 int Board::getWidth()
 {

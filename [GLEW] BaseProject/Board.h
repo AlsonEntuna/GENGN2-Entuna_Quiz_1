@@ -33,7 +33,7 @@ class Board: public BaseObject
 	private:
         float squareSize;
         vector< std::vector<char> > boxContent;
-		void drawSquare(glm::vec3& pos, float size);
+		// Collection of Tiles
 		vector<Tile*> m_Tiles;
 };
 
