@@ -29,4 +29,4 @@ class BaseObject
 		glm::vec3 m_color;
 };
 
-#endif /* BASEOBJECT_H */
+#endif

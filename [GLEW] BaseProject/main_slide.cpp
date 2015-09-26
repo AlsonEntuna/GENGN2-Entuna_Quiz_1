@@ -26,9 +26,9 @@ class Slide: public BaseGame
         Slide(int width,int height,char title[]):
         BaseGame(width, height, title)
 		{
+			// Instantiate Board
             board.init((char*)"res/slide.map", SQUARE_WIDTH, -START_X, -START_Y, -START_Z);
-            //cube.init(-START_X + 0.05f, -START_Y + 0.1f, -START_Z + SQUARE_WIDTH / 2 + 0.05f, SQUARE_WIDTH - 0.1f);
-
+			// Instantiate Cube
 			cube.init(1.0f, 1.0f, 0.0f, SQUARE_WIDTH - 0.1f);
 			// Set Position Cube
 			cube.setX(-START_X + 0.05f);
@@ -186,7 +186,7 @@ class Slide: public BaseGame
 
 int main()
 {
-    char title[] = "[GENGN2-Entuna Quiz 1]";
+    char title[] = "[GENGN2] Entuna Quiz 1";
     Slide application(600, 800, title);
     application.start();
     return 0;
