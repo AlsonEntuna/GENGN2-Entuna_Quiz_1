@@ -1,10 +1,3 @@
-/*
-Windows
-g++ -DSFML_STATIC cpp Board.cpp WinChecker.cpp slide.cpp -o run.exe -I"C:/sfml/include" -L"C:/sfml/lib" -lopengl32 -lglu32 -lsfml-graphics -lsfml-window -lsfml-system
-
-Linux
-g++ -DSFML_STATIC BaseGame.cpp BaseObject.cpp Board.cpp Cube.cpp main_slide.cpp -o run.exe -lGL -lGLEW -lsfml-graphics -lsfml-window -lsfml-system && ./run.exe
-*/
 #include <iostream>
 #include "Board.h"
 #include "Cube.h"
@@ -144,7 +137,8 @@ class Slide: public BaseGame
             char nextChar;
             int newX = (cube.getX()+START_X)/SQUARE_WIDTH;            
             int newY = (cube.getY()+START_Y)/SQUARE_WIDTH;
-            switch(direction){
+            switch(direction)
+			{
                 case DIRECTION_UP:newY++;break;
                 case DIRECTION_DOWN:newY--;break;
                 case DIRECTION_LEFT:newX--;break;
@@ -165,7 +159,7 @@ class Slide: public BaseGame
 		{
             int xSpace = (cube.getX()+START_X)/SQUARE_WIDTH;
             int ySpace = (cube.getY()+START_Y)/SQUARE_WIDTH;
-            if(board.getTileType(xSpace,ySpace)=='b')
+            if(board.getTileType(xSpace,ySpace) == 'b')
 			{
                 if(isNextMovementSafe())
 				{
@@ -179,7 +173,7 @@ class Slide: public BaseGame
                 }
 				else direction = 0;
             }
-			else if(board.getTileType(xSpace,ySpace)=='y')
+			else if(board.getTileType(xSpace,ySpace) =='y')
 			{
                 //std::cout << "WIN!";
                 cube.setX(-START_X+0.05f);
@@ -192,7 +186,7 @@ class Slide: public BaseGame
 
 int main()
 {
-    char title[] = "Entuna - Slide Game";
+    char title[] = "[GENGN2-Entuna Quiz 1]";
     Slide application(600, 800, title);
     application.start();
     return 0;
