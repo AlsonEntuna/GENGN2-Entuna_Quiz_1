@@ -12,6 +12,7 @@
 *.so
 *.dll
 *.dylib
+*.tlog
 
 # Fortran module files
 *.mod
